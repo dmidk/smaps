@@ -1,0 +1,17 @@
+.DS_Store
+
+## Xcode User settings
+xcuserdata
+
+## Xcode 8 and earlier
+*.xcscmblueprint
+*.xccheckout
+
+*.lock
+*.swp
+*~.nib
+
+## App packaging
+*.ipa
+*.dSYM.zip
+*.dSYM

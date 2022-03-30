@@ -10,23 +10,24 @@ import smaps
 
 @main
 struct sampleSpoAppApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    //@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
         WindowGroup {
-            UpdateContentView(viewModel: ExternalModel())
+            UpdateContentView()
         }
         
     }
     
 }
 
-class AppDelegate: NSObject, UIApplicationDelegate {
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        
-        initiateSmaps()
-//        let refObj = SpoLocation(appKey: "AppName")
-//        refObj.smaps_start()
-        
-        return true
-    }
-}
+//class AppDelegate: NSObject, UIApplicationDelegate {
+//    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+//        
+//        
+//        //initiateSmaps()
+////        let refObj = SpoLocation(appKey: "AppName")
+////        refObj.smaps_start()
+//        
+//        return true
+//    }
+//}

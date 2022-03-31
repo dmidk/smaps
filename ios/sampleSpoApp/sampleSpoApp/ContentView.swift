@@ -60,6 +60,9 @@ struct UpdateContentView: View {
 
     var body: some View {
         
+        VStack(alignment: .leading, spacing: 30) {
+            Label("SampleSpoApp", systemImage: "cloud.rain")
+        
         VStack(alignment: .leading, spacing: -10.0) {
             HStack {
                 Text("Latitude:")
@@ -84,8 +87,10 @@ struct UpdateContentView: View {
                 Text("hPa")
                     .padding()
             }
+        }.padding()
+            
         }
-        .padding()
+        
 
     }
 }

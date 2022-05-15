@@ -11,6 +11,7 @@ import android.location.Location
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import mumayank.com.airlocationlibrary.AirLocation
 
 interface LocationCallback: AirLocation.Callbacks {
     override fun onFailed(locationFailedEnum: AirLocation.LocationFailedEnum)  {

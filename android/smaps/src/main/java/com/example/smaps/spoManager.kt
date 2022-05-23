@@ -1,23 +1,76 @@
 package com.example.smaps
 
-import android.app.Activity
+
 import android.content.Context
 import android.content.Intent
-import android.hardware.Sensor
-import android.hardware.SensorEvent
-import android.hardware.SensorEventListener
-import android.hardware.SensorManager
 import android.location.Location
-import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import mumayank.com.airlocationlibrary.AirLocation
+import com.example.smaps.LocationCallback as LocationCallback
+import android.hardware.Sensor
+import android.hardware.SensorManager
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.os.Bundle
+import android.app.Activity
 
-interface LocationCallback: AirLocation.Callbacks {
-    override fun onFailed(locationFailedEnum: AirLocation.LocationFailedEnum)  {
-        onFailed()
+interface LocationCallback: AirLocation.Callback {
+    override fun onFailure(locationFailedEnum: AirLocation.LocationFailedEnum)  {
+        onFailure()
     }
-    fun onFailed()
+    fun onFailure()
+}
+
+class SpoManager(private val activity: AppCompatActivity) : Activity(), SensorEventListener {
+
+    private var mSensorManager: SensorManager? = null
+    private var mPressure: Sensor? = null
+
+    private val airLocation = AirLocation(this, object : AirLocation.Callback {
+
+        override fun onSuccess(locations: ArrayList<Location>) {
+            // do something
+            // the entire track is sent in locations
+        }
+
+        override fun onFailure(locationFailedEnum: AirLocation.LocationFailedEnum) {
+            // do something
+            // the reason for failure is given in locationFailedEnum
+        }
+
+    })
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        airLocation.start() // CALL .start() WHEN YOU ARE READY TO RECEIVE LOCATION UPDATES
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        airLocation.onActivityResult(requestCode, resultCode, data) // ADD THIS LINE INSIDE onActivityResult
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        airLocation.onRequestPermissionsResult(requestCode, permissions, grantResults) // ADD THIS LINE INSIDE onRequestPermissionResult
+    }
+
+    override fun onSensorChanged(event: SensorEvent?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
+        TODO("Not yet implemented")
+    }
+
+}
+/*
+interface LocationCallback: AirLocation.Callback { //LocationCallback: AirLocation.Callbacks
+    override fun onFailure(locationFailedEnum: AirLocation.LocationFailedEnum)  {
+        onFailure()
+    }
+    fun onFailure() // onFailed was renamed to onFailure
 }
 
 
@@ -76,7 +129,7 @@ class SpoManager(private val activity: AppCompatActivity) : Activity(), SensorEv
         airLocation = AirLocation(activity,
             shouldWeRequestPermissions = true,
             shouldWeRequestOptimization = true,
-            callbacks = callback)
+            callback = callback) //callbacks = callback
     }
 
     //fun startBarometer(callback: PressureCallback){
@@ -87,7 +140,7 @@ class SpoManager(private val activity: AppCompatActivity) : Activity(), SensorEv
     fun start(){
 
         startLocation(object: LocationCallback {
-            override fun onFailed() {
+            override fun onFailure() { //onFailed
                 Log.e("failed", "Location Fetch failed for some reason")
             }
 
@@ -118,3 +171,4 @@ class SpoManager(private val activity: AppCompatActivity) : Activity(), SensorEv
 
     }
 }
+*/

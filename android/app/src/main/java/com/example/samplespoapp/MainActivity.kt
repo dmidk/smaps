@@ -10,6 +10,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import com.example.samplespoapp.databinding.ActivityMainBinding
+import com.example.smaps.SpoManager
 
 class MainActivity : AppCompatActivity() {
 

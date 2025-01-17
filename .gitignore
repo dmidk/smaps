@@ -15,3 +15,16 @@ xcuserdata
 *.ipa
 *.dSYM.zip
 *.dSYM
+
+# Android-specific ignores
+*.iml
+*.apk
+*.ap_
+*.dex
+*.class
+*.log
+.gradle/
+.idea/
+build/
+google-services.json
+!android/apk/app-debug-androidTest.apk

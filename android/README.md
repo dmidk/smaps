@@ -9,7 +9,7 @@ SMAPS is developed to harness the potential of smartphone sensors, making use of
 ## Features
 
 - **Data Collection**: SMAPS utilizes various sensors present in smartphones to gather data.
-- **Data Transmission**: Collected data is transmitted to Firebase every 7 minutes.
+- **Data Transmission**: Collected data is transmitted to Firebase every 7 seconds.
 - **Data Attributes**: The following data attributes are collected by SMAPS:
   - Timestamp
   - Latitude
